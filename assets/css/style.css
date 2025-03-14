@@ -9,3 +9,136 @@
 a {
     text-decoration: none;
 }
+
+:root {
+    --animation-duration: .51s;
+    --timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #121212;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.list {
+    position: absolute;
+    width: 30%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: start;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.item .blur {
+    z-index: 0;
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    transition: all var(--animation-duration) var(--timing-function);
+    cursor: pointer;
+}
+
+.item time {
+    color: #bdbaba;
+    margin-right: 10px;
+}
+
+.item span {
+    color: #fff;
+    font-size: 80px;
+    line-height: 80px;
+}
+
+.list:hover .blur {
+    filter: blur(6px);
+}
+
+.list .blur:hover {
+    z-index: 2;
+    filter: blur(0);
+    transform: translateX(1rem);
+}
+
+.img-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    overflow: hidden;
+    width: 20rem;
+    height: 30rem;
+    left: 10rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.img-wrapper figure {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+}
+
+.img-wrapper img {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.img-wrapper figure.animate-in {
+    animation-name: animate-in;
+    animation-duration: var(--animation-duration);
+    animation-timing-function: var(--timing-function);
+    animation-fill-mode: forwards;
+}
+
+@keyframes animate-in {
+    0% {
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.img-wrapper figure.animate-out {
+    animation-name: animate-out;
+    animation-duration: var(--animation-duration);
+    animation-timing-function: var(--timing-function);
+    animation-fill-mode: forwards;
+}
+
+@keyframes animate-out {
+    0% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+}
+
+
+
+
